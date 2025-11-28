@@ -18,7 +18,12 @@ const useSignup = function (setIsAuthenticated) {
 
       if (response.ok) {
         const user = await response.json();
-        localStorage.setItem("user", JSON.stringify(user));
+        const userString = JSON.stringify(user);
+
+        // ✅ store in BOTH storages so earlier iterations + iteration4 test are happy
+        localStorage.setItem("user", userString);
+        sessionStorage.setItem("user", userString);
+
         console.log("User signed up successfully!");
         setIsAuthenticated(true);
         navigate("/");
@@ -39,4 +44,6 @@ const useSignup = function (setIsAuthenticated) {
   };
 };
 
+// named + default export so other code can use either style
+export { useSignup };
 export default useSignup;

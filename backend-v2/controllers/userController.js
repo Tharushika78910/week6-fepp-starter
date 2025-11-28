@@ -37,12 +37,15 @@ const loginUser = async (req, res) => {
 
 // signup a user
 const signupUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, password2 } = req.body;
 
   try {
-    // validation
-    if (!email || !password) {
+    if (!email || !password || !password2) {
       throw Error("All fields must be filled");
+    }
+
+    if (password !== password2) {
+      throw Error("Passwords do not match");
     }
     if (!validator.isEmail(email)) {
       throw Error("Email not valid");
