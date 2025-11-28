@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 function Navbar({ setIsAuthenticated, isAuthenticated }) {
   const handleClick = () => {
-    // remove user from storage
-    localStorage.removeItem("user");
+    // remove user from sessionStorage (Iteration 5 requirement)
+    sessionStorage.removeItem("user");
     setIsAuthenticated(false);
   };
 

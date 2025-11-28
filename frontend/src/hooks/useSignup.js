@@ -20,8 +20,6 @@ const useSignup = function (setIsAuthenticated) {
         const user = await response.json();
         const userString = JSON.stringify(user);
 
-        // ✅ store in BOTH storages so earlier iterations + iteration4 test are happy
-        localStorage.setItem("user", userString);
         sessionStorage.setItem("user", userString);
 
         console.log("User signed up successfully!");
@@ -44,6 +42,5 @@ const useSignup = function (setIsAuthenticated) {
   };
 };
 
-// named + default export so other code can use either style
 export { useSignup };
 export default useSignup;
