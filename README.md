@@ -22,5 +22,24 @@
  ### Question 3 - Discuss which approach you plan to use for your project and explain why.
  - For this project, I plan to use the backend-v2 style, where the authentication logic (validation, password hashing, and login checks) lives in  the controller instead of in Mongoose static methods on the model because Clear separation of concerns and easier to follow and debug.
 
+
+
  
-     
+## Iteration 7
+
+ ### Question 2.1 - What is the purpose of userSchema.statics.signup in userModel.js?
+
+  - userSchema.statics.signup centralizes all logic for creating a new user validation, hashing, and saving so that it’s reusable, secure, and separate from route/controller code.
+
+ ### Question 2.2 - Compare User.create({ email, password: hash }) to this.create({ email, password: hash }). When and why do we use this instead of the model's name?
+
+  - Inside Mongoose statics, this = the model. We use this so the method works even before the model exists, and remains flexible and maintainable.
+
+ ### Question 2.3 - Why is validator imported in userController.js and not in userModel.js in this version?
+
+  - The validation logic (email/password checks) is no longer inside the Mongoose model’s static methods. It now lives in the controller, so the controller needs the validator library—not the model.
+
+ ### Question 3 - Discuss which approach you plan to use for your project and explain why.
+
+  - I chose controller based validation because it keeps the project structure simpler, clearer, and easier to maintain. The model stays lightweight, and all request handling, logic including validation remains where HTTP requests are actually processed.
+
