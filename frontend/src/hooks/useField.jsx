@@ -11,7 +11,6 @@ export const useField = (type) => {
     setValue("");
   };
 
-  // ONLY return props meant for <input />
   return {
     type,
     value,

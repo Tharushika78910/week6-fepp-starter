@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 const useLogin = (setIsAuthenticated) => {
   const navigate = useNavigate();
 
-  // handleLogin now receives email + password from LoginComponent/useField
   const handleLogin = async (email, password) => {
     try {
       const response = await fetch("/api/users/login", {
