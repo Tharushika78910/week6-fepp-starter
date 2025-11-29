@@ -1,12 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 const useLogin = (setIsAuthenticated) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  // handleLogin now receives email + password from LoginComponent/useField
+  const handleLogin = async (email, password) => {
     try {
       const response = await fetch("/api/users/login", {
         method: "POST",
@@ -30,13 +28,7 @@ const useLogin = (setIsAuthenticated) => {
     }
   };
 
-  return {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    handleLogin,
-  };
+  return { handleLogin };
 };
 
 export default useLogin;
